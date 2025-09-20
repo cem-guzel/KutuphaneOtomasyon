@@ -353,6 +353,206 @@
         }
 
         }
+
+        .topbar .btn.btn-solid {
+            color: #e5e7eb;
+        }
+
+            .topbar .btn.btn-solid:hover {
+                background: rgba(255,255,255,.08);
+            }
+
+        .topbar .btn.btn-success {
+            background: #0b1220;
+            border: 1px solid rgba(255,255,255,.15);
+        }
+
+            .topbar .btn.btn-success:hover {
+                filter: brightness(1.08);
+            }
+        /* Topbar içeriğini dikey ortala */
+        header.topbar .navbar,
+        header.topbar .navbar .navbar-collapse,
+        header.topbar .navbar .navbar-nav {
+            align-items: center !important;
+        }
+
+        /* Butonlar ezilmesin / rahat nefes alsın */
+        .topbar-tools .btn {
+            line-height: 1.25rem;
+            padding: .45rem .75rem;
+        }
+
+        /* Mobilde iki butonun solda/sağda yerleşimi zaten justify-content-between ile */
+        /* Topbardaki butonların etkileşimi: “bir ton açığı” */
+        .topbar .btn {
+            box-shadow: none !important;
+            transition: filter .15s ease, box-shadow .15s ease, transform .12s ease;
+        }
+
+            .topbar .btn:hover {
+                filter: brightness(1.06);
+            }
+
+            .topbar .btn:active, .topbar .btn:focus {
+                filter: brightness(1.10);
+                box-shadow: none !important;
+            }
+
+        /* Sadece ISBN butonu hover’da gölge alsın */
+        .topbar .btn-isbn {
+            background: #0b1220 !important;
+            border: 1px solid rgba(255,255,255,.15) !important;
+            box-shadow: none !important;
+        }
+
+            .topbar .btn-isbn:hover {
+                box-shadow: 0 8px 22px rgba(11,18,32,.35) !important;
+            }
+        /* Tara butonunda border/efekt sabitleme */
+        .topbar .btn-isbn {
+            background: #0b1220 !important;
+            border: none !important; /* beyaz border kalksın */
+            color: #e5e7eb !important;
+            box-shadow: none !important;
+        }
+
+            .topbar .btn-isbn:hover,
+            .topbar .btn-isbn:focus,
+            .topbar .btn-isbn:active {
+                background: #0b1220 !important; /* tıklayınca beyaz efekt oluşmasın */
+                color: #e5e7eb !important; /* text rengi değişmesin */
+                filter: none !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
+
+        /* Eğer Material Waves eklentisi halen bağlıysa dalga efektini öldür */
+        .waves-effect {
+            position: static !important;
+        }
+
+        .waves-ripple {
+            display: none !important;
+        }
+        /* === TOPBAR DÜZGÜN BUTON SETİ (BORDER YOK, YAZI KAYBOLMAZ) === */
+        header.topbar {
+            background: #0b1220 !important;
+        }
+
+            header.topbar .navbar {
+                background: transparent !important;
+            }
+
+            /* Tüm topbar butonlarının sıfırlanması */
+            header.topbar .btn,
+            header.topbar .nav-link {
+                border: none !important;
+                box-shadow: none !important;
+                color: #e5e7eb !important;
+                background: transparent;
+                transition: background .12s ease, filter .12s ease, transform .1s ease;
+            }
+
+            /* "Ghost" tip (ikonlu metin butonları – arama/çıkış/Google Books) */
+            header.topbar .btn-ghost,
+            header.topbar .nav-link {
+                background: transparent !important;
+                color: #e5e7eb !important;
+            }
+
+                header.topbar .btn-ghost:hover,
+                header.topbar .nav-link:hover {
+                    background: rgba(255,255,255,.08) !important;
+                    color: #ffffff !important;
+                }
+
+                header.topbar .btn-ghost:active,
+                header.topbar .btn-ghost:focus,
+                header.topbar .nav-link:active,
+                header.topbar .nav-link:focus {
+                    background: rgba(255,255,255,.12) !important;
+                    color: #ffffff !important;
+                    outline: none !important;
+                }
+
+            /* "Solid" tip (vurgulu buton – ISBN ve istersen telefon için) */
+            header.topbar .btn-solid,
+            header.topbar .btn-isbn,
+            header.topbar .btn-phone-scan {
+                background: #1f262d !important;
+                color: #e5e7eb !important;
+                border: none !important;
+                border-radius: .5rem;
+            }
+
+                header.topbar .btn-solid:hover,
+                header.topbar .btn-isbn:hover,
+                header.topbar .btn-phone-scan:hover {
+                    background: #232b33 !important;
+                    color: #ffffff !important;
+                }
+
+                header.topbar .btn-solid:active,
+                header.topbar .btn-isbn:active,
+                header.topbar .btn-phone-scan:active,
+                header.topbar .btn-solid:focus,
+                header.topbar .btn-isbn:focus,
+                header.topbar .btn-phone-scan:focus {
+                    background: #232b33 !important;
+                    color: #ffffff !important;
+                    outline: none !important;
+                }
+
+            /* Arama açılan kutu topbar temasına uysun */
+            header.topbar .app-search {
+                background: #0b1220 !important;
+                border: 1px solid rgba(255,255,255,.1) !important;
+                box-shadow: 0 8px 24px rgba(2,6,23,.45) !important;
+            }
+
+                header.topbar .app-search .form-control {
+                    background: rgba(255,255,255,.06) !important;
+                    color: #e5e7eb !important;
+                    border-color: rgba(255,255,255,.12) !important;
+                }
+
+                    header.topbar .app-search .form-control::placeholder {
+                        color: #94a3b8 !important;
+                    }
+
+                header.topbar .app-search .srh-btn {
+                    color: #cbd5e1 !important;
+                }
+
+            /* Waves eklentisinden gelen ripple/border’ı tamamen öldür */
+            header.topbar .waves-effect,
+            header.topbar .waves-light {
+                position: static !important;
+            }
+
+            header.topbar .waves-ripple {
+                display: none !important;
+            }
+
+            /* Kollara takılan bootstrap outline stillerini tamamen geçersiz kıl */
+            header.topbar .btn-solid {
+                background: transparent !important;
+                color: #e5e7eb !important;
+                border: none !important;
+            }
+
+                header.topbar .btn-solid:hover {
+                    background: rgba(255,255,255,.08) !important;
+                }
+
+            /* İkon/metin renkleri */
+            header.topbar .navbar .navbar-nav .nav-link i,
+            header.topbar .mdi, header.topbar .ti-search, header.topbar .fa {
+                color: inherit !important;
+                fill: currentColor !important;
+            }
+
     </style>
 </head>
 
@@ -422,158 +622,81 @@
                 <!-- ============================================================== -->
 
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-left mr-auto">
+
+                    <ul class="navbar-nav mr-auto align-items-center">
                         <li class="nav-item d-none d-md-block">
-                            <!-- FIX: Bu buton yan menüyü ikon-only moda getirir (JS altta) -->
-                            <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                            <a class="nav-link sidebartoggler" href="javascript:void(0)" data-sidebartype="mini-sidebar">
                                 <i class="mdi mdi-menu font-24"></i>
                             </a>
                         </li>
-                        <li class="nav-item d-md-none">
-                            <a class="nav-link" asp-controller="Book" asp-action="Index">
-                                <i class="mdi mdi-book-multiple"></i> Kitaplar
-                            </a>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- create new -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="d-none d-md-block">Create New <i class="fa fa-angle-down"></i></span>
-                                <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+
+                        <!-- Telefondan Tara (solda) -->
+                        <li class="nav-item d-none d-md-block">
+                            <button type="button" class="btn btn-phone-scan mx-1" onclick="openPhoneScan()">
+                                <i class="fas fa-mobile-alt mr-1"></i> Telefondan Tara
+                            </button>
                         </li>
 
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <!-- FIX: arama ikonuna tıklayınca aç/kapa; dışına tıklayınca kapanacak (JS altta) -->
-                        <li class="nav-item search-box">
-                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                        <!-- ARAMA İKONU: TELEFONDAN TARA’NIN HEMEN YANINA -->
+                        <li class="nav-item search-box d-none d-md-block">
+                            <a class="nav-link" href="javascript:void(0)">
                                 <i class="ti-search"></i>
                             </a>
-                            <form class="app-search position-absolute bg-white p-2 rounded" method="get" asp-controller="Search" asp-action="Index">
+                            <form class="app-search position-absolute p-2 rounded" method="get" asp-controller="Search" asp-action="Index">
                                 <input type="text" class="form-control" placeholder="Search &amp; enter" name="query">
                                 <button type="submit" class="srh-btn"><i class="ti-search"></i></button>
                             </form>
                         </li>
+
+                        <!-- Mobilde iki buton yan yana -->
+                        <li class="nav-item d-flex d-md-none w-100 px-2">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <button type="button" class="btn btn-phone-scan" onclick="openPhoneScan()">
+                                    <i class="fas fa-mobile-alt mr-1"></i> Telefondan Tara
+                                </button>
+                                <button type="button" class="btn btn-isbn" onclick="openIsbnModal()">
+                                    <i class="fas fa-barcode mr-1"></i> ISBN Tara
+                                </button>
+                            </div>
+                        </li>
                     </ul>
 
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-right">
-                        <!-- ============================================================== -->
-                        <!-- Comment -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="mdi mdi-bell font-24"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End Comment -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- Messages -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="font-24 mdi mdi-comment-processing"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
-                                <ul class="list-style-none">
-                                    <li>
-                                        <div class="">
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="link border-top">
-                                                <div class="d-flex no-block align-items-center p-10">
-                                                    <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
-                                                    <div class="m-l-10">
-                                                        <h5 class="m-b-0">Event today</h5>
-                                                        <span class="mail-desc">Just a reminder that event</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="link border-top">
-                                                <div class="d-flex no-block align-items-center p-10">
-                                                    <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
-                                                    <div class="m-l-10">
-                                                        <h5 class="m-b-0">Settings</h5>
-                                                        <span class="mail-desc">You can customize this template</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="link border-top">
-                                                <div class="d-flex no-block align-items-center p-10">
-                                                    <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
-                                                    <div class="m-l-10">
-                                                        <h5 class="m-b-0">Pavan kumar</h5>
-                                                        <span class="mail-desc">Just see the my admin!</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="link border-top">
-                                                <div class="d-flex no-block align-items-center p-10">
-                                                    <span class="btn btn-danger btn-circle"><i class="fa fa-link"></i></span>
-                                                    <div class="m-l-10">
-                                                        <h5 class="m-b-0">Luanch Admin</h5>
-                                                        <span class="mail-desc">Just see the my new admin!</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End Messages -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/matrix-admin/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
-                            <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Auth" asp-action="Logout">
-                                    <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
-                            </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
+                   <ul class="navbar-nav ml-auto align-items-center topbar-tools">
+    <li class="nav-item d-none d-md-block">
+        <button id="searchGoogleBooksBtnTop" type="button" class="btn btn-ghost">
+            <i class="fas fa-search mr-1"></i> Google Books’ta Ara
+        </button>
+    </li>
+    <li class="nav-item d-none d-md-block">
+        <button type="button" class="btn btn-solid mx-1 btn-isbn" onclick="openIsbnModal()">
+            <i class="fas fa-barcode mr-1"></i> ISBN Tara
+        </button>
+    </li>
+    <li class="nav-item ml-2">
+        <form asp-controller="Auth" asp-action="Logout" method="post" class="mb-0">
+            <button type="submit" class="btn btn-ghost">
+                <i class="mdi mdi-logout-variant mr-1"></i> Çıkış Yap
+            </button>
+        </form>
+    </li>
+</ul>
                 </div>
+
             </nav>
         </header>
+        <partial name="_IsbnScannerPartial" />
+
+        <!-- Telefondan Tara Modal (ARTIK LAYOUT’TA) -->
+        <div id="phoneScanModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content p-3 text-center">
+                    <h5 class="mb-2">Telefondan Tara</h5>
+                    <div id="scanQr" class="d-flex justify-content-center"></div>
+                    <small class="text-muted d-block mt-2">Telefon kameranızla bu kodu okutun.</small>
+                </div>
+            </div>
+        </div>
+
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
@@ -623,19 +746,8 @@
                                 <i class="mdi mdi-test-tube"></i><span class="hide-menu">Log Kayıtları</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" asp-controller="Chat" asp-action="Index" aria-expanded="false">
-                                <i class="fab fa-react"></i><span class="hide-menu">ChatBot</span>
-                            </a>
-                        </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Icons </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="~/matrix-admin/icon-material.html" class="sidebar-link"><i class="mdi mdi-emoticon"></i><span class="hide-menu"> Material Icons </span></a></li>
-                                <li class="sidebar-item"><a href="~/matrix-admin/icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Font Awesome Icons </span></a></li>
-                            </ul>
-                        </li>
+                 
 
                         @* 
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="~/matrix-admin/grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li>
@@ -723,564 +835,7 @@
             <div class="container-fluid">
                 @RenderBody()
 
-                <!-- ============================================================== -->
-                <!-- Sales chart / Demo içerikler (orijinalde vardı) -->
-                <!-- Buradaki demoları istersen kaldırabilirsin; stil override’ları üstte -->
-                <!-- ============================================================== -->
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-md-flex align-items-center">
-                                    <div>
-                                        <h4 class="card-title">Site Analysis</h4>
-                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- column -->
-                                    <div class="col-lg-9">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-line-chart"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                    <i class="fa fa-user m-b-5 font-16"></i>
-                                                    <h5 class="m-b-0 m-t-5">2540</h5>
-                                                    <small class="font-light">Total Users</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                    <i class="fa fa-plus m-b-5 font-16"></i>
-                                                    <h5 class="m-b-0 m-t-5">120</h5>
-                                                    <small class="font-light">New Users</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                    <i class="fa fa-cart-plus m-b-5 font-16"></i>
-                                                    <h5 class="m-b-0 m-t-5">656</h5>
-                                                    <small class="font-light">Total Shop</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                    <i class="fa fa-tag m-b-5 font-16"></i>
-                                                    <h5 class="m-b-0 m-t-5">9540</h5>
-                                                    <small class="font-light">Total Orders</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                    <i class="fa fa-table m-b-5 font-16"></i>
-                                                    <h5 class="m-b-0 m-t-5">100</h5>
-                                                    <small class="font-light">Pending Orders</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 m-t-15">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                    <i class="fa fa-globe m-b-5 font-16"></i>
-                                                    <h5 class="m-b-0 m-t-5">8540</h5>
-                                                    <small class="font-light">Online Orders</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- column -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Latest Posts</h4>
-                            </div>
-                            <div class="comment-widgets scrollable">
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row m-t-0">
-                                    <div class="p-2"><img src="~/matrix-admin/assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text w-100">
-                                        <h6 class="font-medium">James Anderson</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">April 14, 2016</span>
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="~/matrix-admin/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text active w-100">
-                                        <h6 class="font-medium">Michael Jorden</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">May 10, 2016</span>
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="~/matrix-admin/assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text w-100">
-                                        <h6 class="font-medium">Johnathan Doeting</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">August 1, 2016</span>
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">To Do List</h4>
-                                <div class="todo-widget scrollable" style="height:450px;">
-                                    <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label todo-label" for="customCheck">
-                                                    <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span> <span class="badge badge-pill badge-danger float-right">Today</span>
-                                                </label>
-                                            </div>
-                                            <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                            </ul>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label todo-label" for="customCheck1">
-                                                    <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing</span><span class="badge badge-pill badge-primary float-right">1 week </span>
-                                                </label>
-                                            </div>
-                                            <div class="item-date"> 26 jun 2017</div>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                <label class="custom-control-label todo-label" for="customCheck2">
-                                                    <span class="todo-desc">Give Purchase report to</span> <span class="badge badge-pill badge-info float-right">Yesterday</span>
-                                                </label>
-                                            </div>
-                                            <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                            </ul>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                                <label class="custom-control-label todo-label" for="customCheck3">
-                                                    <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing </span> <span class="badge badge-pill badge-warning float-right">2 weeks</span>
-                                                </label>
-                                            </div>
-                                            <div class="item-date"> 26 jun 2017</div>
-                                        </li>
-                                        <li class="list-group-item todo-item" data-role="task">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                                <label class="custom-control-label todo-label" for="customCheck4">
-                                                    <span class="todo-desc">Give Purchase report to</span> <span class="badge badge-pill badge-info float-right">Yesterday</span>
-                                                </label>
-                                            </div>
-                                            <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="~/matrix-admin/assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- card -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title m-b-0">Progress Box</h4>
-                                <div class="m-t-20">
-                                    <div class="d-flex no-block align-items-center">
-                                        <span>81% Clicks</span>
-                                        <div class="ml-auto">
-                                            <span>125</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 81%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>72% Uniquie Clicks</span>
-                                        <div class="ml-auto">
-                                            <span>120</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>53% Impressions</span>
-                                        <div class="ml-auto">
-                                            <span>785</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>3% Online Users</span>
-                                        <div class="ml-auto">
-                                            <span>8</span>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 3%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- card new -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title m-b-0">News Updates</h4>
-                            </div>
-                            <ul class="list-style-none">
-                                <li class="d-flex no-block card-body">
-                                    <i class="fa fa-check-circle w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-                                        <span class="text-muted">dolor sit amet, consectetur adipiscing</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">20</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-gift w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Congratulation Maruti, Happy Birthday</a>
-                                        <span class="text-muted">many many happy returns of the day</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">11</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-plus w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Maruti is a Responsive Admin theme</a>
-                                        <span class="text-muted">But already everything was solved. It will ...</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">19</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-leaf w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Envato approved Maruti Admin template</a>
-                                        <span class="text-muted">i am very happy to approved by TF</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">20</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-question-circle w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0"> I am alwayse here if you have any question</a>
-                                        <span class="text-muted">we glad that you choose our template</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">15</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- column -->
-                    <div class="col-lg-6">
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Chat Option</h4>
-                                <div class="chat-box scrollable" style="height:475px;">
-                                    <!--chat Row -->
-                                    <ul class="chat-list">
-                                        <!--chat Row -->
-                                        <li class="chat-item">
-                                            <div class="chat-img"><img src="~/matrix-admin/assets/images/users/1.jpg" alt="user"></div>
-                                            <div class="chat-content">
-                                                <h6 class="font-medium">James Anderson</h6>
-                                                <div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing &amp; type setting industry.</div>
-                                            </div>
-                                            <div class="chat-time">10:56 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li class="chat-item">
-                                            <div class="chat-img"><img src="~/matrix-admin/assets/images/users/2.jpg" alt="user"></div>
-                                            <div class="chat-content">
-                                                <h6 class="font-medium">Bianca Doe</h6>
-                                                <div class="box bg-light-info">It’s Great opportunity to work.</div>
-                                            </div>
-                                            <div class="chat-time">10:57 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li class="odd chat-item">
-                                            <div class="chat-content">
-                                                <div class="box bg-light-inverse">I would love to join the team.</div>
-                                                <br>
-                                            </div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li class="odd chat-item">
-                                            <div class="chat-content">
-                                                <div class="box bg-light-inverse">Whats budget of the new project.</div>
-                                                <br>
-                                            </div>
-                                            <div class="chat-time">10:59 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                        <li class="chat-item">
-                                            <div class="chat-img"><img src="~/matrix-admin/assets/images/users/3.jpg" alt="user"></div>
-                                            <div class="chat-content">
-                                                <h6 class="font-medium">Angelina Rhodes</h6>
-                                                <div class="box bg-light-info">Well we have good budget for the project</div>
-                                            </div>
-                                            <div class="chat-time">11:00 am</div>
-                                        </li>
-                                        <!--chat Row -->
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body border-top">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <div class="input-field m-t-0 m-b-0">
-                                            <textarea id="textarea1" placeholder="Type and enter" class="form-control border-0"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <a class="btn-circle btn-lg btn-cyan float-right text-white" href="javascript:void(0)"><i class="fas fa-paper-plane"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- card -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Our partner (Box with Fix height)</h4>
-                            </div>
-                            <div class="comment-widgets scrollable" style="max-height: 130px;">
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row m-t-0">
-                                    <div class="p-2"><img src="~/matrix-admin/assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text w-100">
-                                        <h6 class="font-medium">James Anderson</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">April 14, 2016</span>
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="~/matrix-admin/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text active w-100">
-                                        <h6 class="font-medium">Michael Jorden</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">May 10, 2016</span>
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="~/matrix-admin/assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text w-100">
-                                        <h6 class="font-medium">Johnathan Doeting</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">August 1, 2016</span>
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- accoridan part -->
-                        <div class="accordion" id="accordionExample">
-                            <div class="card m-b-0">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                                            <span>Accordion Example 1</span>
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid...
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card m-b-0 border-top">
-                                <div class="card-header" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                                            <span>Accordion Example 2</span>
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit...
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card m-b-0 border-top">
-                                <div class="card-header" id="headingThree">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                                            <span>Accordion Example 3</span>
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit...
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- toggle part -->
-                        <div id="accordian-4">
-                            <div class="card m-t-30">
-                                <a class="card-header link" data-toggle="collapse" data-parent="#accordian-4" href="#Toggle-1" aria-expanded="true" aria-controls="Toggle-1">
-                                    <i class="seticon fa fa-arrow-right" aria-hidden="true"></i>
-                                    <span>Toggle, Open by default</span>
-                                </a>
-                                <div id="Toggle-1" class="collapse show multi-collapse">
-                                    <div class="card-body widget-content">
-                                        This box is opened by default...
-                                    </div>
-                                </div>
-                                <a class="card-header link border-top" data-toggle="collapse" data-parent="#accordian-4" href="#Toggle-2" aria-expanded="false" aria-controls="Toggle-2">
-                                    <i class="seticon fa fa-times" aria-hidden="true"></i>
-                                    <span>Toggle, Closed by default</span>
-                                </a>
-                                <div id="Toggle-2" class="multi-collapse collapse">
-                                    <div class="card-body widget-content">
-                                        This box is now open
-                                    </div>
-                                </div>
-                                <a class="card-header collapsed link border-top" data-toggle="collapse" data-parent="#accordian-4" href="#Toggle-3" aria-expanded="false" aria-controls="Toggle-3">
-                                    <i class="seticon fa fa-times" aria-hidden="true"></i>
-                                    <span>Toggle, Closed by default</span>
-                                </a>
-                                <div id="Toggle-3" class="collapse multi-collapse">
-                                    <div class="card-body widget-content">
-                                        This box is now open
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tabs -->
-                        <div class="card">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Tab1</span></a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Tab2</span></a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Tab3</span></a> </li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content tabcontent-border">
-                                <div class="tab-pane active" id="home" role="tabpanel">
-                                    <div class="p-20">
-                                        <p>And is full of waffle to...</p>
-                                        <img src="~/matrix-admin/assets/images/background/img4.jpg" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="tab-pane  p-20" id="profile" role="tabpanel">
-                                    <div class="p-20">
-                                        <img src="~/matrix-admin/assets/images/background/img4.jpg" class="img-fluid">
-                                        <p class="m-t-10">And is full of waffle to...</p>
-                                    </div>
-                                </div>
-                                <div class="tab-pane p-20" id="messages" role="tabpanel">
-                                    <div class="p-20">
-                                        <p>And is full of waffle to...</p>
-                                        <img src="~/matrix-admin/assets/images/background/img4.jpg" class="img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- /col-lg-6 -->
-                </div> <!-- /row demo -->
-                <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
-                <!-- ============================================================== -->
+            
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -1433,5 +988,246 @@
 
     <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     @RenderSection("Scripts", required: false)
+    <script>
+        // --- ISBN Modal kontrolü (Html5QrcodeScanner lazily init) ---
+        let __isbnScanner = null;
+        let __isbnScannerReady = false;
+
+        function openIsbnModal() {
+          const $m = $('#isbnModal');
+          $m.show();
+
+          // ilk açılışta scanner'ı oluştur
+          if (!__isbnScanner) {
+            const config = {
+              fps: 10,
+              qrbox: 250,
+              formatsToSupport: [ Html5QrcodeSupportedFormats.EAN_13 ],
+              showTorchButtonIfSupported: true,
+              rememberLastUsedCamera: true
+            };
+            __isbnScanner = new Html5QrcodeScanner('isbnReader', config, /* verbose */ false);
+
+            __isbnScanner.render(onIsbnDecoded, onIsbnScanFailure);
+            __isbnScannerReady = true;
+          }
+        }
+
+        function onIsbnDecoded(decodedText, decodedResult) {
+          // decodedText: ISBN/EAN-13
+          const isbn = (decodedText || '').replace(/[^0-9Xx]/g,'');
+          if (!isbn) return;
+
+          // İstersen burada direkt bir sayfaya yönlendirebilirsin:
+          // window.location.href = '/Book?isbn=' + isbn;
+
+          // Örnek: Google Books modalını ISBN ile açmak istersen
+          if (typeof searchBooks === 'function') {
+            $('#googleBooksModal').modal('show');
+            $('#googleBooksSearchForm input[name="query"]').val(isbn);
+            $('#googleBooksSearchForm').trigger('submit');
+          }
+
+          closeIsbnModal(); // tara kapat
+        }
+
+        function onIsbnScanFailure(err) {
+          // istemiyorsan sessiz geç
+          // console.debug(err);
+        }
+
+        function closeIsbnModal() {
+          const $m = $('#isbnModal');
+          try {
+            // Html5QrcodeScanner kendi kontrolünü kapatır, modalı biz gizleriz
+            // (render edilmişse UI kendini dispose eder)
+          } catch(e) {}
+          $m.hide();
+        }
+
+        // Kapat butonu id’si varsa bağla (partial’ın içinde var)
+        $(document).on('click', '#btnIsbnClose', closeIsbnModal);
+        // modal arka plana tıklayınca kapat
+        $(document).on('click', function(e){
+          if ($(e.target).is('#isbnModal')) closeIsbnModal();
+        });
+
+        // --- Telefondan Tara: QR üret ve modalı aç ---
+        function openPhoneScan() {
+          const $m = $('#phoneScanModal');
+          $m.modal('show');
+
+          // QR alanını temizle ve yeniden çiz
+          const el = document.getElementById('scanQr');
+          el.innerHTML = '';
+
+          // Buraya telefonun açacağı URL'i yaz.
+          // Varsa kendi endpoint'inle değiştir: örn '/Book/MobileScan'
+          const url = window.location.origin + '/Book/MobileScan';
+
+          new QRCode(el, { text: url, width: 160, height: 160 });
+        }
+    </script>
+    <script>
+        // Topbardaki buton da kitaplar sayfasındaki modalı tetiklesin
+        document.addEventListener('click', function(e){
+          const btn = e.target.closest('#searchGoogleBooksBtnTop');
+          if (!btn) return;
+          // Index.cshtml içindeki modal id'si: #googleBooksModal
+          if (typeof $ !== 'undefined' && $('#googleBooksModal').length) {
+            $('#googleBooksModal').modal('show');
+            return;
+          }
+          // Eğer o modal bu sayfada yoksa, Books/Index'e yönlendirmek istersen:
+          // window.location.href = '/Book';
+        });
+    </script>
+    <script>
+
+        $(document).on('click', '#searchGoogleBooksBtnTop, #searchGoogleBooksBtn', function (e) {
+          e.preventDefault();
+          ensureGoogleBooksModal();        // yoksa DOM'a ekler
+          $('#googleBooksModal').modal('show');
+        });
+
+    </script>
+    <script>
+          // Google Books modalını her sayfada kullanılabilir yap
+          function ensureGoogleBooksModal() {
+            if ($('#googleBooksModal').length) return; // zaten var
+
+            // 2.1) Modal HTML'sini DOM'a ekle
+            const modalHtml = `
+        <div id="googleBooksModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" style="max-width:95%;width:1200px;">
+            <div class="modal-content">
+              <div class="modal-header" style="background:#1f262d;color:#fff;border-bottom:none;">
+                <h5 class="modal-title"><i class="fas fa-book-open mr-2"></i> Google Books'ta Arama</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body" style="max-height:70vh;overflow-y:auto;padding:20px;">
+                <div id="bookDetailView" class="d-none"></div>
+
+                <form id="googleBooksSearchForm" class="mb-4">
+                  <div class="input-group input-group-lg">
+                    <input type="text" name="query" class="form-control" placeholder="Kitap adı, yazar veya ISBN..." autocomplete="off">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-cta"><i class="fas fa-search"></i> Ara</button>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="form-inline mb-3">
+                  <label class="mr-2">Arama Kapsamı:</label>
+                  <select id="lookup-scope" class="form-control">
+                    <option value="both" selected>Yerel + Google</option>
+                    <option value="local">Sadece Yerel</option>
+                    <option value="google">Sadece Google</option>
+                  </select>
+                </div>
+
+                <div id="popularBooks" class="row"></div>
+                <div id="searchResults" class="row"></div>
+                <div id="errorMessage" class="alert alert-danger d-none"></div>
+              </div>
+
+              <div class="modal-footer justify-content-end">
+                <small class="text-muted">Veriler Google Books API üzerinden alınmaktadır.</small>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+            $('body').append(modalHtml);
+
+            // 2.2) İlk açılışta Popüler Kitaplar'ı yükle
+            $('#googleBooksModal').on('show.bs.modal', function() {
+              if (!window.__gb_popular_loaded) {
+                window.__gb_popular_loaded = true;
+                loadPopularBooks();
+              }
+            });
+
+            // 2.3) Form submit → arama
+            $(document).on('submit', '#googleBooksSearchForm', function (e) {
+              e.preventDefault();
+              const q = $(this).find('input[name="query"]').val();
+              searchBooks(q);
+            });
+          }
+
+          // 3) Yardımcılar: sadece tanımlı değilse ekle (Book/Index’te varsa çakışmasın)
+          if (typeof loadPopularBooks !== 'function') {
+            window.loadPopularBooks = function () {
+              $('#searchResults').empty();
+              $('#popularBooks').html('<div class="col-12 text-center"><i class="fas fa-spinner fa-spin"></i> Yükleniyor...</div>');
+              $.get('@Url.Action("GetPopularBooks", "Book")', function (data) {
+                $('#popularBooks').empty();
+                if (data && data.length) data.forEach(b => $('#popularBooks').append(renderBookCard(b)));
+                else $('#popularBooks').html('<div class="col-12 text-center">Popüler kitap bulunamadı.</div>');
+              }).fail(function () {
+                $('#popularBooks').html('<div class="col-12 text-center text-danger">Popüler kitaplar yüklenirken hata oluştu.</div>');
+              });
+            };
+          }
+
+          if (typeof searchBooks !== 'function') {
+            window.searchBooks = function (query) {
+              $('#popularBooks').empty();
+              $('#searchResults').html('<div class="col-12 text-center"><i class="fas fa-spinner fa-spin"></i> Aranıyor...</div>');
+              $('#errorMessage').addClass('d-none');
+
+              $.get('@Url.Action("SearchInApi", "Book")', { query: query, returnJson: true }, function (data) {
+                $('#searchResults').empty();
+                if (data?.error) {
+                  $('#errorMessage').removeClass('d-none').text(data.error);
+                } else if (data && data.length) {
+                  data.forEach(b => $('#searchResults').append(renderBookCard(b)));
+                } else {
+                  $('#searchResults').html('<div class="col-12 text-center">Sonuç bulunamadı.</div>');
+                }
+              }).fail(function (jq, status) {
+                $('#errorMessage').removeClass('d-none').text('Arama yapılırken hata oluştu: ' + status);
+              });
+            };
+          }
+
+          if (typeof renderBookCard !== 'function') {
+            window.renderBookCard = function (book) {
+              return `
+        <div class="col-lg-6 col-xl-4 mb-4">
+          <div class="book-card card h-100" data-id="${book.id}">
+            <div class="book-cover-container" style="height:300px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;overflow:hidden;border-radius:5px 5px 0 0;">
+              <img src="${book.thumbnailUrl || '/images/book.png'}" class="book-cover" alt="${book.title || 'Kitap kapağı'}" style="max-height:100%;width:auto;object-fit:contain;">
+            </div>
+            <div class="book-details" style="padding:20px;background:#fff;border-radius:0 0 5px 5px;display:flex;flex-direction:column;">
+              <h5 class="book-title" style="font-weight:600;margin-bottom:10px;color:#333;">${book.title || 'Başlık yok'}</h5>
+              <p class="book-author"><strong>Yazar:</strong> ${book.author || 'Bilinmiyor'}</p>
+              <p class="book-meta"><strong>Yayınevi:</strong> ${book.publisher || 'Bilinmiyor'}</p>
+              <p class="book-meta"><strong>ISBN:</strong> ${book.isbn || 'Bilinmiyor'}</p>
+              <p class="book-meta"><small class="text-muted">Yayın Tarihi: ${book.publishedDate || 'Bilinmiyor'}</small></p>
+
+              <form class="add-book-form mt-auto" method="post" action="@Url.Action("AddFromApi", "Book")">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="bookId" value="${book.id}" />
+                <input type="hidden" name="isbn" value="${book.isbn || ''}" />
+                <input type="hidden" name="title" value="${(book.title || '').replace(/"/g,'&quot;')}" />
+                <input type="hidden" name="author" value="${(book.author || '').replace(/"/g,'&quot;')}" />
+                <input type="hidden" name="publisher" value="${(book.publisher || '').replace(/"/g,'&quot;')}" />
+                <input type="hidden" name="thumbnailUrl" value="${book.thumbnailUrl || ''}" />
+                <input type="hidden" name="category" value="${(book.category || '').replace(/"/g,'&quot;')}" />
+                <input type="hidden" name="description" value="${(book.description || '').replace(/"/g,'&quot;')}" />
+                <button type="submit" class="btn btn-cta mt-2"><i class="fas fa-plus-circle mr-1"></i> Ekle</button>
+              </form>
+            </div>
+          </div>
+        </div>`;
+            };
+          }
+    </script>
+
 </body>
 </html>

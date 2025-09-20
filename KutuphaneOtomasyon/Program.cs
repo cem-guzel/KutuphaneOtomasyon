@@ -2,7 +2,6 @@ using KutuphaneOtomasyon.Data;
 using KutuphaneOtomasyon.Services;
 using KutuphaneOtomasyon.Services.Clients;
 using KutuphaneOtomasyon.Services.AI;
-using KutuphaneOtomasyon.Services.Chat;
 using KutuphaneOtomasyon.Services.Hosted;
 using KutuphaneOtomasyon.Services.Recommendations;
 using KutuphaneOtomasyon.Services.Risk;
@@ -72,14 +71,6 @@ builder.Services.AddScoped<KutuphaneOtomasyon.Services.IBookLookupService, Kutup
 builder.Services.AddHttpClient<IGoogleBooksClient, GoogleBooksClient>();
 builder.Services.AddScoped<IBookLookupService, BookLookupService>();
 builder.Services.AddScoped<IBookMetaFetcher, BookMetaFetcher>();
-builder.Services.AddScoped<OpenAiChatService>();
-builder.Services.AddScoped<LocalChatService>();
-builder.Services.AddScoped<IChatService>(sp =>
-{
-    var primary = sp.GetRequiredService<OpenAiChatService>();
-    var local = sp.GetRequiredService<LocalChatService>();
-    return new SmartChatService(primary, local);
-});
 
 var app = builder.Build();
 

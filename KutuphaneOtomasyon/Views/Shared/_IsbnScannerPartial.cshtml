@@ -1,79 +1,357 @@
 ﻿@* Sadece HTML/CSS *@
 <style>
-    /* Modal kaplaması */
+    /* --- Modal centering + padding (keyboard-safe) --- */
     .isbn-modal {
-        display: none;
+        display: none; /* mevcut mantığın kalsın */
         position: fixed;
         inset: 0;
         z-index: 9999;
-        background: rgba(0,0,0,.4);
-        backdrop-filter: blur(2px)
+        background: rgba(0,0,0,.45);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        display: none;
+        overflow: auto;
+        padding: 24px; /* kenarlara yapışmasın */
     }
 
+        .isbn-modal[aria-hidden="false"] {
+            display: flex;
+        }
+    /* istersen show anında set ediyorsun */
+
+    .isbn-modal {
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- Card: daha modern görünüm --- */
     .isbn-card {
-        background: #fff;
-        border-radius: 16px;
-        width: 90%;
-        max-width: 520px;
-        margin: 5% auto;
-        box-shadow: 0 25px 50px rgba(0,0,0,.1);
-        overflow: visible
+        width: min(520px, 92vw);
+        border-radius: 18px;
+        background: var(--card, #fff);
+        box-shadow: 0 24px 70px rgba(2,6,23,.22);
+        overflow: hidden;
+        transform: translateY(8px) scale(.98);
+        opacity: .0;
+        animation: isbn-pop .26s ease-out forwards;
+    }
+    @@keyframes isbn-pop {
+        to
+
+    {
+        transform: translateY(0) scale(1);
+        opacity: 1;
     }
 
+    }
+    @@media (max-width: 480px) {
+        .isbn-card
+
+    {
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    }
+
+    /* --- Header --- */
     .isbn-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 14px 16px;
-        font-weight: 600;
-        border-bottom: 1px solid #eee
+        border-bottom: 1px solid #eef2f7;
+        background: linear-gradient(180deg,#fff, #fafbfc);
     }
 
+    .isbn-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        color: #0b1220;
+        letter-spacing: .2px;
+    }
+
+        .isbn-title i {
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #f3f4f6;
+            color: #1f262d;
+            font-size: .9rem;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+        }
+
+    .isbn-sub {
+        display: block;
+        margin-top: 2px;
+        font-weight: 500;
+        color: #64748b;
+        font-size: .82rem;
+    }
+
+    /* --- Close (sağ üst ikon) --- */
+    .isbn-close {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: #64748b;
+        border-radius: 10px;
+        padding: 6px;
+        line-height: 0;
+        cursor: pointer;
+    }
+
+        .isbn-close:hover {
+            background: #f1f5f9;
+            color: #0b1220;
+        }
+
+        .isbn-close:focus-visible {
+            outline: 2px solid #0b1220;
+            outline-offset: 2px;
+        }
+
+    /* --- Body --- */
     .isbn-body {
-        padding: 8px 12px;
-        overflow: visible !important
+        padding: 14px 16px 6px;
     }
 
+    /* --- Actions (sticky alt çubuk) --- */
     .isbn-actions {
         display: flex;
         gap: 8px;
-        justify-content: flex-end;
+        justify-content: space-between;
         padding: 12px;
-        border-top: 1px solid #eee
+        border-top: 1px solid #eef2f7;
+        background: #fff;
+        position: sticky;
+        bottom: 0;
     }
 
-    /* Scanner alanı */
+        .isbn-actions .left {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .isbn-actions .right {
+            margin-left: auto;
+        }
+
+    /* --- Dosyadan yükle butonunu “ghost” yap --- */
+    .btn-ghost {
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        color: #1f2937;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-weight: 600;
+    }
+
+        .btn-ghost:hover {
+            background: #f8fafc;
+        }
+
+        .btn-ghost input[type="file"] {
+            display: none;
+        }
+
+    /* --- Kapat butonu daha yumuşak --- */
+    .btn-soft {
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        color: #111827;
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-weight: 600;
+    }
+
+        .btn-soft:hover {
+            background: #f8fafc;
+        }
+
+    /* --- Kamera alanı: corner frame + video ölçüleri --- */
     #isbnReader {
         width: 100%;
         min-height: 360px !important;
-        aspect-ratio: auto !important
+        position: relative;
+        background: #0b122005; /* video yokken çok açık bir zemin */
+        border-radius: 12px;
+        overflow: hidden;
     }
-
-    /* Html5Qrcode elemanları kesilmesin */
-    #isbnModal .html5-qrcode-container {
-        overflow: visible !important;
-        padding: 0 !important
-    }
-
-    #isbnModal video, #isbnModal canvas, #isbnModal .html5-qrcode-video {
+    /* video/canvas yüksekliği, kapak şeklinde */
+    #isbnModal video,
+    #isbnModal canvas,
+    #isbnModal .html5-qrcode-video {
         width: 100% !important;
         max-height: 260px !important;
         object-fit: cover;
+        border-radius: 12px;
     }
 
-    /* “Kamera / Dosya” sekmesi ve file input’u görünür kalsın */
-    #isbnReader__scan_type_select,
-    #isbnReader input[type="file"] {
-        display: block !important;
-        visibility: visible !important;
+    /* köşe parantezleri (CSS-only) */
+    #isbnReader::before,
+    #isbnReader::after {
+        content: "";
+        position: absolute;
+        inset: 10px;
+        pointer-events: none;
+        border-radius: 12px;
+    }
+    /* dört köşe sadece 24px’lik kısa çizgiler şeklinde */
+    #isbnReader::before {
+        --c: #1f262d;
+        background: linear-gradient(#0000, #0000 calc(100% - 24px), var(--c) calc(100% - 24px), var(--c)) left top / 24px 2px no-repeat, linear-gradient(#0000, #0000 calc(100% - 24px), var(--c) calc(100% - 24px), var(--c)) right top / 24px 2px no-repeat, linear-gradient(var(--c), var(--c) 24px, #0000 24px) left top / 2px 24px no-repeat, linear-gradient(var(--c), var(--c) 24px, #0000 24px) right top / 2px 24px no-repeat, linear-gradient(#0000, #0000 24px, var(--c) 24px, var(--c)) left bottom / 2px 24px no-repeat, linear-gradient(#0000, #0000 24px, var(--c) 24px, var(--c)) right bottom / 2px 24px no-repeat, linear-gradient(var(--c), var(--c)) left bottom / 24px 2px no-repeat, linear-gradient(var(--c), var(--c)) right bottom / 24px 2px no-repeat;
     }
 
-    .swal2-container {
-        z-index: 2147483647 !important;
+    /* Html5Qrcode varsayılan padding/overflow düzeltmeleri */
+    #isbnModal .html5-qrcode-container {
+        overflow: visible !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: 0 !important;
     }
+
+    #isbnModal .html5-qrcode-element {
+        margin: 0 !important;
+    }
+
+    /* Bilgilendirme metinleri: tek satırdan uzun değilse gri ve küçük */
+    .isbn-hint {
+        color: #6b7280;
+        font-size: .86rem;
+        margin-top: 6px;
+    }
+
+    /* Erişilebilirlik: prefers-reduced-motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .isbn-card
+
+    {
+        animation: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    }
+
+    .isbn-modal:hover {
+        cursor: default;
+    }
+
+    .isbn-modal:has(.isbn-card:hover) {
+        cursor: default;
+    }
+
+    /* Başlık font boyutu ufak artış */
+    #isbnTitle {
+        font-size: 1.05rem;
+    }
+
+    #isbnModal[style*="display: block"] {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #isbnModal:not([aria-hidden="true"]) {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Tema değişkenleri – istersen paletine göre düzenle */
+    :root {
+        --modal-bg: #1f262d; /* kart zemini */
+        --modal-head: #0b1220; /* header/footer zemin */
+        --modal-brd: rgba(255,255,255,.08);
+        --modal-ink: #e5e7eb; /* ana metin */
+        --modal-muted: #94a3b8; /* ikincil metin */
+    }
+
+    /* Kartın kendisi */
+    .isbn-card.theme-dark {
+        background: var(--modal-bg);
+        color: var(--modal-ink);
+    }
+
+        /* Header / Footer */
+        .isbn-card.theme-dark .isbn-head {
+            background: var(--modal-head);
+            border-bottom: 1px solid var(--modal-brd);
+        }
+
+        .isbn-card.theme-dark .isbn-actions {
+            background: var(--modal-head);
+            border-top: 1px solid var(--modal-brd);
+        }
+
+        /* Başlık ve alt metin renkleri */
+        .isbn-card.theme-dark .isbn-title {
+            color: var(--modal-ink);
+        }
+
+        .isbn-card.theme-dark .isbn-sub {
+            color: var(--modal-muted);
+        }
+
+        /* Başlıktaki yuvarlak ikon arka planı */
+        .isbn-card.theme-dark .isbn-title i {
+            background: rgba(255,255,255,.06);
+            color: var(--modal-ink);
+            box-shadow: inset 0 0 0 1px var(--modal-brd);
+        }
+
+        /* Close butonu (ikon) */
+        .isbn-card.theme-dark .isbn-close {
+            color: var(--modal-muted);
+        }
+
+            .isbn-card.theme-dark .isbn-close:hover {
+                background: rgba(255,255,255,.08);
+                color: var(--modal-ink);
+            }
+
+        /* Body içi küçük metin */
+        .isbn-card.theme-dark .isbn-hint {
+            color: var(--modal-muted);
+        }
+
+        /* Ghost ve Soft butonları koyu zemine uyumlu yap */
+        .isbn-card.theme-dark .btn-ghost,
+        .isbn-card.theme-dark .btn-soft {
+            background: rgba(255,255,255,.06);
+            color: var(--modal-ink);
+            border: 1px solid var(--modal-brd);
+        }
+
+            .isbn-card.theme-dark .btn-ghost:hover,
+            .isbn-card.theme-dark .btn-soft:hover {
+                background: rgba(255,255,255,.10);
+            }
+
+        /* Reader çerçevesi ve köşe parantez rengi */
+        .isbn-card.theme-dark #isbnReader {
+            background: rgba(255,255,255,.02);
+        }
+
+            .isbn-card.theme-dark #isbnReader::before {
+                --c: rgba(255,255,255,.65);
+            }
+
+    /* html5-qrcode alanlarını da koyu zeminle uyumla */
+    #isbnModal .html5-qrcode-container,
+    #isbnModal .html5-qrcode-element {
+        color: var(--modal-ink);
+    }
+
 </style>
 
 
-<button id="btnIsbnScan" type="button" class="btn btn-primary">
-    <i class="fas fa-camera"></i> ISBN Tara
-</button>
+
 
 <div id="isbnModal"
      class="isbn-modal"
@@ -82,27 +360,38 @@
      aria-labelledby="isbnTitle"
      aria-hidden="true"
      tabindex="-1">
-    <div class="isbn-card">
-        <div class="isbn-head" id="isbnTitle">ISBN Barkod Tara</div>
+
+    <div class="isbn-card theme-dark" role="document">
+        <div class="isbn-head">
+            <div class="isbn-title">
+                <i class="fas fa-barcode" aria-hidden="true"></i>
+                <div>
+                    <div id="isbnTitle">ISBN Barkod Tara</div>
+                    <small class="isbn-sub">Kamera izni vermezse alttan “Dosyadan Yükle”yi kullan.</small>
+                </div>
+            </div>
+            <button class="isbn-close" type="button" id="btnIsbnClose" aria-label="Kapat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
         <div class="isbn-body">
             <!-- Html5QrcodeScanner kendi UI'sini buraya basar (kamera + dosyadan yükleme) -->
-            <div id="isbnReader" style="width:100%;min-height:280px"></div>
-            <div class="mt-2">
-                <label class="btn btn-outline-secondary btn-sm mb-0">
-                    <input id="isbnFile" type="file" accept="image/*" hidden />
-                    <i class="fas fa-file-upload"></i> Dosyadan Barkod Yükle
-                </label>
-                <small class="text-muted ml-2">JPG/PNG, EAN-13 desteklenir.</small>
-            </div>
-            <small class="text-muted d-block mt-2">
-                Kamera izin vermezse, tarayıcı arayüzündeki “file” seçeneğiyle barkod görselini yükleyebilirsin.
-            </small>
-            <small class="text-muted d-block mt-2">
-                Kamera yoksa, üstteki sekmeden “Dosyadan Yükle”’yi seçebilirsin.
-            </small>
+            <div id="isbnReader"></div>
+
+            <small class="isbn-hint">JPG/PNG, EAN-13 desteklenir.</small>
         </div>
+
         <div class="isbn-actions">
-            <button id="btnIsbnClose" type="button" class="btn btn-light">Kapat</button>
+            <div class="left">
+                <label class="btn-ghost mb-0">
+                    <input id="isbnFile" type="file" accept="image/*" />
+                    <i class="fas fa-file-upload mr-1"></i> Dosyadan Barkod Yükle
+                </label>
+            </div>
+            <div class="right">
+                <button id="btnIsbnCloseFooter" type="button" class="btn-soft">Kapat</button>
+            </div>
         </div>
     </div>
 </div>

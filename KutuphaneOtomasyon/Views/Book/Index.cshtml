@@ -560,7 +560,7 @@
         }
 
     .btn-cta {
-        background: linear-gradient(135deg,#4e73df,#224abe);
+        background: #1f262d !important;
         border: none;
         color: #fff;
         border-radius: 10px;
@@ -580,7 +580,7 @@
         }
 
         .btn-cta:focus, .btn-cta:active, .btn-cta:focus:active {
-            background: linear-gradient(135deg,#4e73df,#224abe) !important;
+            background: #1f262d !important;
             color: #fff !important;
             outline: none !important;
             box-shadow: 0 0 0 0 transparent !important;
@@ -1051,17 +1051,17 @@
     .container-fluid > .row.mb-4 #searchGoogleBooksBtn,
     .container-fluid > .row.mb-4 a.btn.btn-success,
     #bookTable td:nth-child(8) a.btn-info:hover {
-        background: #0b1220 !important;
+        background: #1f262d !important;
         background-image: none !important;
-        border-color: #0b1220 !important;
+        border-color: #1f262d !important;
         color: #fff !important;
         box-shadow: 0 8px 20px rgba(11,18,32,.25) !important; /* eski mavi gölgelerin yerine */
     }
 
         /* Tablo başlığı kesin dursun */
         #bookTable thead.bg-info th {
-            background: #0b1220 !important;
-            border-color: #0b1220 !important;
+            background: #1f262d !important;
+            border-color: #1f262d !important;
             color: #fff !important;
         }
 
@@ -1118,6 +1118,127 @@
     .swal2-container {
         z-index: 2147483647 !important;
     }
+    /* — Tek satır + ... — */
+    #bookTable {
+        table-layout: fixed !important; /* sabit dağıtım */
+        width: 100% !important;
+    }
+
+        #bookTable th,
+        #bookTable td {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            word-break: normal !important; /* kelime kırma yok */
+        }
+            /* Dar kalması gereken kolonlar (Durum, ID, Detay, İşlemler) */
+            /* --- genişlikleri yeniden dağıt --- */
+            #bookTable th:nth-child(1), #bookTable td:nth-child(1) {
+                width: 10ch !important;
+            }
+            /* Durum ↑ */
+            #bookTable th:nth-child(2), #bookTable td:nth-child(2) {
+                width: 2ch !important;
+            }
+            /* ID   ↓ */
+            #bookTable th:nth-child(3), #bookTable td:nth-child(3) {
+                width: 40% !important;
+            }
+            /* Başlık ↑ (daha görünür) */
+
+            #bookTable th:nth-child(4), #bookTable td:nth-child(4),
+            #bookTable th:nth-child(5), #bookTable td:nth-child(5) { /* Yazar & Kategori (16ch sabit kalsın) */
+                width: 16ch !important;
+                max-width: 16ch !important;
+                min-width: 16ch !important;
+            }
+
+            #bookTable th:nth-child(6), #bookTable td:nth-child(6) {
+                width: 6ch !important;
+            }
+            /* Toplam  ↓ */
+            #bookTable th:nth-child(7), #bookTable td:nth-child(7) {
+                width: 6ch !important;
+            }
+            /* Mevcut  ↓ */
+            #bookTable th:nth-child(8), #bookTable td:nth-child(8) {
+                width: 8ch !important;
+            }
+            /* Detay   ↓ */
+            #bookTable th:nth-child(9), #bookTable td:nth-child(9) {
+                width: 16ch !important;
+            }
+        /* İşlemler biraz kıs */
+        /* İşlem  */
+        /* Mevcut */
+
+        /* (Opsiyonel) Hücre içi padding’i biraz küçült → dar ekranda daha çok sığsın */
+        #bookTable th, #bookTable td {
+            width: auto !important;
+        }
+        /* BAŞLIK: yüksekliği sabit, asla büyümesin */
+        #bookTable thead th {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            height: 44px; /* sabit yükseklik */
+            line-height: 44px; /* metni ortala */
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        /* GÖVDE: tek satır, uzun metni üç nokta */
+        #bookTable tbody td {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            line-height: 42px; /* satır yüksekliği kontrol */
+            height: 42px; /* tek satırda kalsın */
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+    /* Sadece bookTable’ın sarmalında yatay scroll olmasın */
+    .table-responsive.dt-float {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #bookTable thead,
+    #bookTable thead tr,
+    #bookTable thead th {
+        background: #1F262D !important;
+        color: #fff !important;overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+        border-color: #1F262D !important;
+    }
+    /* Üst bar tek satır; solda B, sağda f */
+    .dataTables_wrapper .dt-top {
+        gap: 12px;
+    }
+
+        .dataTables_wrapper .dt-top .dt-buttons {
+            order: 1;
+        }
+
+        .dataTables_wrapper .dt-top .dataTables_filter {
+            order: 2;
+            margin-left: auto;
+        }
+
+    .dataTables_filter label {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .dataTables_filter input {
+        max-width: 320px;
+    }
+
+    [data-role="isbn-launch"], #btnIsbnScanTop, .btn-isbn-floating {
+        display: none !important;
+    }
 
 </style>
 
@@ -1128,31 +1249,17 @@
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-md-12 d-flex justify-content-between align-items-center flex-wrap">
-            <h4 class="card-title mb-0">📚 Kitap Listesi</h4>
 
-            <div class="d-flex align-items-center">
-                <button id="searchGoogleBooksBtn" class="btn btn-cta mr-2">
-                    <i class="fas fa-search mr-1"></i> Google Books’ta Ara
-                </button>
-
-                <a class="btn btn-success btn-rounded waves-effect waves-light" asp-action="Create">
+            <div class="d-flex align-items-center w-100">
+                <a class="btn btn-success btn-rounded" asp-action="Create">
                     <i class="fa fa-plus mr-1"></i> Yeni Kitap Ekle
                 </a>
-                <partial name="_IsbnScannerPartial" />
-            </div>
-        </div>
-    </div>
 
-    <button class="btn btn-outline-primary ml-2" onclick="openPhoneScan()">
-        📱 Telefondan Tara
-    </button>
-    <div id="phoneScanModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-            <div class="modal-content p-3 text-center">
-                <h5 class="mb-2">Telefondan Tara</h5>
-                <div id="scanQr" class="d-flex justify-content-center"></div>
-                <small class="text-muted d-block mt-2">Telefon kameranızla bu kodu okutun.</small>
+                <button id="searchGoogleBooksBtn" class="btn btn-cta ml-auto">
+                    <i class="fas fa-search mr-1"></i> Google Books’ta Ara
+                </button>
             </div>
+
         </div>
     </div>
 
@@ -1354,6 +1461,8 @@
 
         $(document).ready(function () {
             const table = $('#bookTable').DataTable({
+                   dom: '<"dt-top d-flex align-items-center justify-content-between" B f>rt'
+        + '<"dt-bottom d-flex align-items-center justify-content-between" l i p>',
                 responsive: true,
                 autoWidth: false,
                 lengthChange: true,
@@ -1383,7 +1492,7 @@
                         }
                     }
                 ],
-                dom: "Bfrtip"
+              
             });
             cacheColumnDataAndTypes("bookTable");
 
@@ -2668,8 +2777,6 @@
           Quagga.onDetected(onQuaggaDetected);
         }
 
-
-
         function onQuaggaDetected(result) {
           const code = result?.codeResult?.code;
           const isbn = normalizeIsbn13(code);
@@ -2677,32 +2784,6 @@
         }
 
               let _isbnOpenerEl = null;   // modalı açan buton
-        async function openIsbnModal(){
-          _isbnOpenerEl = document.activeElement;
-
-          const $m = $('#isbnModal');
-          $m.addClass('show').css('display','block').attr('aria-hidden','false');
-
-          // Modal görünür olduktan hemen sonra taramayı başlat
-          setTimeout(async () => {
-            await stopScanEngine();
-
-            // BarcodeDetector varsa ve GERÇEKTEN EAN-13 destekliyorsa html5-qrcode, yoksa Quagga
-            let useBD = false;
-            if ('BarcodeDetector' in window && typeof BarcodeDetector.getSupportedFormats === 'function') {
-              try {
-                const fmts = await BarcodeDetector.getSupportedFormats();
-                const hasEAN13 = fmts.map(f => String(f).toLowerCase())
-                                     .some(f => f === 'ean_13' || f === 'ean-13' || f === 'ean13');
-                useBD = hasEAN13;
-              } catch(_) { /* yoksay */ }
-            }
-            if (useBD) startHtml5Qrcode(); else startQuagga();
-
-            // Odak kapat butonuna
-            document.getElementById('btnIsbnClose')?.focus({preventScroll:true});
-          }, 0);
-        }
 
         async function closeIsbnModal(){
           // KAPATMADAN ÖNCE odağı modal dışına al → a11y uyarısı çözülür
@@ -2796,41 +2877,6 @@
         });
 
     </script>
-    <script>
-        async function openPhoneScan(){
-          // 1) oturum token'i
-          const token = crypto.getRandomValues(new Uint32Array(2)).join('');
-
-          // 2) telefonun açacağı URL (QR içine gömülecek)
-          // Geliştirmede: telefon 'localhost'a erişemez. 5. adımı oku.
-          const phoneUrl = `${location.origin}/Book/ScanPhone?token=${token}`;
-
-          // 3) QR üret + modal aç
-          $('#scanQr').empty();
-          new QRCode(document.getElementById('scanQr'), { text: phoneUrl, width: 220, height: 220 });
-          $('#phoneScanModal').modal('show');
-
-          // 4) SignalR bağlan, bu token için gruba gir
-          const conn = new signalR.HubConnectionBuilder()
-              .withUrl('/hubs/scan')
-              .withAutomaticReconnect()
-              .build();
-
-          await conn.start();
-          await conn.invoke('Join', token);
-
-          // 5) telefondan ISBN gelince mevcut akışını tetikle
-          conn.on('isbn', async (isbn)=>{
-            try {
-              // zaten sende var: Google modalını açıp LookupIsbn çağırıyor, vs.
-              await handleDecodedIsbn(isbn);
-            } finally {
-              $('#phoneScanModal').modal('hide');
-              conn.stop();
-            }
-          });
-        }
-    </script>
-
+   
 
 }
